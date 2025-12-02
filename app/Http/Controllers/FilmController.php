@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 class FilmController extends Controller
 {
@@ -15,6 +16,11 @@ class FilmController extends Controller
         $films = Storage::json('/public/films.json');
         return $films;
     }
+    public static function create()
+    {
+        return view('films.list');
+    }
+
     /**
      * List films older than input year 
      * if year is not infomed 2000 year will be used as criteria
@@ -132,5 +138,45 @@ class FilmController extends Controller
             }
         }
         return view("films.list", ["films" => $films_filtered, "title" => $title]);
+    }
+    public function createFilm(Request $request)
+    {
+        $name = $request->input('name');
+        $year = $request->input('year');
+        $genre = $request->input('genre');
+        $country = $request->input('country');
+        $duration = $request->input('duration');
+        $img_url = $request->input('img_url');
+        $films = FilmController::readFilms();
+        
+    
+        if ($this->isFilm($name)) {
+            $error = "Error";
+            return view("films.error", ["error" => $error]);
+        }
+        $films[] = [
+            "name" => $name,
+            "year" => $year,
+            "genre" => $genre,
+            "country" => $country,
+            "duration" => $duration,
+            "img_url" => $img_url
+        ];
+        Storage::disk('public')->put('films.json', json_encode($films));
+        $title = "Listado de películas";
+        return view('films.list', [
+            "films" => $films,
+            "title" => $title
+        ]);
+    }
+    public function isFilm(string $name): bool
+    {
+        $films = FilmController::readFilms();
+        foreach ($films as $film) {
+            if ($film['name'] == $name) {
+                return true;
+            }
+        }
+        return false;
     }
 }
