@@ -29,5 +29,16 @@ Route::middleware('year')->group(function () {
         Route::get('genreFilms/{genre?}', [FilmController::class, "listGenreFilms"])->name('genreFilms');
         Route::get('sortFilms/{year?}', [FilmController::class, "sortFilms"])->name('sortFilms');
         Route::get('countFilms/{year?}', [FilmController::class, "countFilms"])->name('countFilms');
+        Route::post('createFilm', [FilmController::class, "createFilm"])->name('createFilm');
+        Route::group(['prefix' => 'filmin'], function () {
+            Route::post('createFilm', [FilmController::class, "createFilm"])->name('createFilm');
+            Route::post('isFilm', [FilmController::class, "isFilm"])->name(name: 'isFilm');
+        });
     });
 });
+
+// Route::middleware('year')->group(function () {
+//     Route::group(['prefix' => 'filmin'], function () {
+//         Route::post('createFilm', [FilmController::class, "createFilm"])->name('createFilm');
+//     });
+// });

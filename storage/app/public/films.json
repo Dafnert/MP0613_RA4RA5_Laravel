@@ -1,6 +1,6 @@
 [
     {
-        "name": "La Rosa Púrpura del Cairo",
+        "name": "La Rosa P\u00farpura del Cairo",
         "year": 1985,
         "genre": "drama",
         "img_url": "https://es.web.img2.acsta.net/medias/nmedia/18/79/45/34/20253823.jpg",
@@ -26,7 +26,7 @@
     {
         "name": "Arrival",
         "year": 2016,
-        "genre": "ciencia Ficción",
+        "genre": "ciencia Ficci\u00f3n",
         "img_url": "https://pics.filmaffinity.com/La_llegada-686966912-large.jpg",
         "country": "Estados Unidos",
         "duration": 116
@@ -36,7 +36,15 @@
         "year": 2022,
         "genre": "drama",
         "img_url": "https://pics.filmaffinity.com/As_bestas-275688233-large.jpg",
-        "country": "España / Francia",
+        "country": "Espa\u00f1a / Francia",
         "duration": 137
+    },
+    {
+        "name": "The Maze Runner",
+        "year": "2014",
+        "genre": "Acci\u00f3n",
+        "country": "Estados Unidos",
+        "duration": "113",
+        "img_url": "https://images.ecestaticos.com/2J1vbYK0Dfihd-S4lGmZ6N1gJ48=/101x0:1260x608/600x315/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Ffdc%2F7bd%2F9cb%2Ffdc7bd9cb0de178908283a54e7010117.jpg"
     }
 ]

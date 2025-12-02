@@ -25,6 +25,28 @@
         <li><a href=/filmout/countFilms>¿Cuántas películas hay?</a></li>
 
     </ul>
+    <form action="{{ route('createFilm') }}" method="POST">
+        @csrf
+        <div class="form">
+        <input type="text" name="name" id="name" placeholder="name">
+        </div>
+        <div class="form">
+        <input type="text" name="year" id="year" placeholder="year">
+        </div>
+        <div class="form">
+        <input type="text" name="genre" id="genre" placeholder="genre">
+        </div>
+        <div class="form">
+        <input type="text" name="country" id="country" placeholder="country">
+        </div>
+        <div class="form">
+        <input type="text" name="duration" id="duration" placeholder="duration">
+        </div>
+        <div class="form">
+        <input type="text" name="img_url" id="img_url" placeholder="img_url">
+        </div>
+        <input type="submit" name="enviar" value="Enviar">
+    </form>
     <!-- Add Bootstrap JS and Popper.js (required for Bootstrap) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
