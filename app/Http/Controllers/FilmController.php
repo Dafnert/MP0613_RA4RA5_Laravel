@@ -64,31 +64,45 @@ class FilmController extends Controller
         $films = FilmController::readFilms();
 
         foreach ($films as $film) {
-            $year_films[] = $film;
+            if ($film['year'] == $year)
+                $year_films[] = $film;
         }
         return view('films.list', ["films" => $year_films, "title" => $title]);
     }
-    public function sortFilms($year = null)
+    public function sortFilms()
     {
 
         $title = "Pelis ordenadas por año (nuevas a antinguas)";
         $films = FilmController::readFilms();
+
         $sort_films = collect($films)->sortByDesc('year');
+
         return view('films.list', ["films" => $sort_films, "title" => $title]);
+    }
+    public function countFilms()
+    {
+        $title = "¿Cuántas películas hay?";
+        $films = FilmController::readFilms();
+        $count_films = count($films);
+
+        return view('films.counter', ["films" => $count_films, "title" => $title]);
     }
     public function listGenreFilms($genre = null)
     {
-        $genre_films = [];
-        if (is_null($genre))
-
-
-            $title = "Listado de Pelis por género";
+        $title = "Listado de Pelis del género";
         $films = FilmController::readFilms();
 
+        $genre_films = [];
         foreach ($films as $film) {
-            $genre_films[] = $film;
+            if ($film['genre'] == $genre) {
+                $genre_films[] = $film;
+            }
         }
-        return view('films.list', ["films" => $genre_films, "title" => $title]);
+
+        return view('films.list', [
+            "films" => $genre_films,
+            "title" => $title
+        ]);
     }
     /**
      * Lista TODAS las películas o filtra x año o categoría.
