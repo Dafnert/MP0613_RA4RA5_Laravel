@@ -1,59 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies List</title>
+@section('title', 'Movies List')
 
-    <!-- Add Bootstrap CSS link -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+@section('content')
+   <div @class(['container', 'mt-5', 'content-wrapper'])>
 
-    <!-- Include any additional stylesheets or scripts here -->
-</head>
+    <h2 @class(['mb-4'])>Lista de Películas</h2>
 
-<body class="container">
+    <div @class(['row', 'mb-5'])>
+        <div @class(['col-md-4', 'mb-3'])>
+            <div @class(['card', 'shadow-sm', 'p-3'])>
+                <a href="/filmout/oldFilms">Pelis antiguas</a>
+            </div>
+        </div>
+        <div @class(['col-md-4', 'mb-3'])>
+            <div @class(['card', 'shadow-sm', 'p-3'])>
+                <a href="/filmout/newFilms">Pelis nuevas</a>
+            </div>
+        </div>
+        <div @class(['col-md-4', 'mb-3'])>
+            <div @class(['card', 'shadow-sm', 'p-3'])>
+                <a href="/filmout/films">Todas las pelis</a>
+            </div>
+        </div>
+        <div @class(['col-md-4', 'mb-3'])>
+            <div @class(['card', 'shadow-sm', 'p-3'])>
+                <a href="/filmout/yearFilms">Pelis por año</a>
+            </div>
+        </div>
+        <div @class(['col-md-4', 'mb-3'])>
+            <div @class(['card', 'shadow-sm', 'p-3'])>
+                <a href="/filmout/genreFilms">Pelis por género</a>
+            </div>
+        </div>
+        <div @class(['col-md-4', 'mb-3'])>
+            <div @class(['card', 'shadow-sm', 'p-3'])>
+                <a href="/filmout/sortFilms">Pelis ordenadas por año</a>
+            </div>
+        </div>
+        <div @class(['col-md-4', 'mb-3'])>
+            <div @class(['card', 'shadow-sm', 'p-3'])>
+                <a href="/filmout/countFilms">¿Cuántas películas hay?</a>
+            </div>
+        </div>
+    </div>
 
-    <h1 class="mt-4">Lista de Peliculas</h1>
-    <ul>
-        <li><a href=/filmout/oldFilms>Pelis antiguas</a></li>
-        <li><a href=/filmout/newFilms>Pelis nuevas</a></li>
-        <li><a href=/filmout/films>Pelis</a></li>
-        <li><a href=/filmout/yearFilms>Pelis por Año</a></li>
-        <li><a href=/filmout/genreFilms>Pelis por Género</a></li>
-        <li><a href=/filmout/sortFilms>Pelis ordenadas por Año (nuevas a antinguas)</a></li>
-        <li><a href=/filmout/countFilms>¿Cuántas películas hay?</a></li>
+        <h2>Crear una película</h2>
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
 
-    </ul>
-    <form action="{{ route('createFilm') }}" method="POST">
-        @csrf
-        <div class="form">
-        <input type="text" name="name" id="name" placeholder="name">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+            </ul>
         </div>
-        <div class="form">
-        <input type="text" name="year" id="year" placeholder="year">
+    @endif
+        <div @class(['card', 'p-4'])>
+            <form action="{{ route('createFilm') }}" method="POST">
+                @csrf
+
+                <input type="text" name="name" id="name" @class(['form-control']) placeholder="Nombre de la película" >
+
+                <input type="number" name="year" id="year" @class(['form-control']) placeholder="Año" >
+
+                <input type="text" name="genre" id="genre" @class(['form-control']) placeholder="Género" >
+
+                <input type="text" name="country" id="country" @class(['form-control']) placeholder="País" >
+
+                <input type="number" name="duration" id="duration" @class(['form-control']) placeholder="Duración (min)">
+
+                <input type="text" name="img_url" id="img_url" @class(['form-control']) placeholder="URL de la imagen PNG/JPG">
+
+                <button type="submit" @class(['btn', 'btn-primary', 'mt-3'])>Enviar</button>
+            </form>
         </div>
-        <div class="form">
-        <input type="text" name="genre" id="genre" placeholder="genre">
-        </div>
-        <div class="form">
-        <input type="text" name="country" id="country" placeholder="country">
-        </div>
-        <div class="form">
-        <input type="text" name="duration" id="duration" placeholder="duration">
-        </div>
-        <div class="form">
-        <input type="text" name="img_url" id="img_url" placeholder="img_url">
-        </div>
-        <input type="submit" name="enviar" value="Enviar">
-    </form>
-    <!-- Add Bootstrap JS and Popper.js (required for Bootstrap) -->
+    </div>
+
+    <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <!-- Include any additional HTML or Blade directives here -->
-
-</body>
-
-</html>
+@endsection
