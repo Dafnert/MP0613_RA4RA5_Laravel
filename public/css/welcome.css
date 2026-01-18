@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Arial", sans-serif;
+}
+
+/* Header */
+header.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px 0;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    gap: 10px;  
+}
+
+header.header h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+header.header p {
+    margin: 10px 0 0 0;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+footer.footer {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer.footer p {
+    margin: 5px 0;
+}
+
+.card a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.card a:hover {
+    color: #764ba2;
+    transition: 0.3s;
+}
+
+.btn-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+}
+
+.btn-gradient:hover {
+    opacity: 0.9;
+}
+
+form input {
+    margin-bottom: 10px;
+}
+
+.content-wrapper {
+    flex: 1;
+}
+
+@media (max-width: 576px) {
+    header.header h1 {
+        font-size: 2rem;
+    }
+
+    header.header p {
+        font-size: 1rem;
+    }
+}
+main {
+    flex: 1;
+    padding-top: 50px;
+}

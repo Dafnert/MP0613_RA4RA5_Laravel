@@ -151,9 +151,10 @@ class FilmController extends Controller
         
     
         if ($this->isFilm($name)) {
-            $error = "Error";
-            return view("films.error", ["error" => $error]);
-        }
+        return redirect()->back()
+            ->withInput()
+            ->withErrors(['name' => 'Esta película ya existe']);
+    }
         $films[] = [
             "name" => $name,
             "year" => $year,
