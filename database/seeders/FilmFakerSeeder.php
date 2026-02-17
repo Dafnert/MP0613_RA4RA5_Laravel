@@ -16,8 +16,8 @@ class FilmFakerSeeder extends Seeder
         $faker = Faker::create();
 
         $genres = ['Action', 'Drama', 'Comedy', 'Horror', 'Sci-Fi', 'Romance', 'Thriller', 'Adventure', 'Fantasy', 'Documentary'];
-
         $countries = ['USA', 'UK', 'France', 'Spain', 'Italy', 'Germany', 'Japan', 'South Korea', 'Canada', 'Australia'];
+        $rating = ['G', 'PG', 'PG-13', 'R', 'NC-17'];
 
         for ($i = 0; $i < 10; $i++) {
             DB::table('films')->insert([
@@ -26,6 +26,7 @@ class FilmFakerSeeder extends Seeder
                 'genre' => $faker->randomElement($genres),
                 'country' => $faker->randomElement($countries),
                 'duration' => $faker->numberBetween(80, 180), 
+                'rating' => $faker->randomElement($rating),
                 'img_url' => $faker->imageUrl(640, 480, 'movie', true, 'Film'),
                 'created_at' => now(),
                 'updated_at' => now()
