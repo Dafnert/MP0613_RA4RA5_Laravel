@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('genre', 50);
             $table->string('country', 30);
             $table->integer('duration');
+            $table->string('rating', 30);
             $table->string('img_url', 255);
             $table->timestamps();
         });
