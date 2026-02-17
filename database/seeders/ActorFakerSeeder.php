@@ -25,6 +25,7 @@ class ActorFakerSeeder extends Seeder
                 'surname' => $faker->lastName(),
                 'birthdate' => $faker->date('Y-m-d', '-18 years'), 
                 'country' => $faker->randomElement($countries),
+                'salary' => $faker->numberBetween(10000, 50000), 
                 'img_url' => $faker->imageUrl(640, 480, 'people', true, 'Actor'),
                 'created_at' => now(),
                 'updated_at' => now()
