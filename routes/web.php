@@ -42,5 +42,6 @@ Route::middleware('year')->group(function () {
     Route::group(['prefix' => 'actorout'], function (): void {
         Route::get('actors', [ActorController::class, "listActors"])->name('listActors');
         Route::get('listActorsByDecade/{year}',  [ActorController::class, "listActorsByDecade"])->name('listActorsByDecade');
+        Route::get('countActors', [ActorController::class, "countActors"])->name('countActors');
     });
 });

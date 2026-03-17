@@ -29,4 +29,10 @@ class ActorController extends Controller
 
         return view("actors.list", ["actors" => $actors, "title" => $title]);
     }
+    public function countActors()
+    {
+        $title = "¿Cuántos actores hay?";
+        $actors = Actor::count();
+        return view("actors.counter", ["actors" => $actors, "title" => $title]);
+    }
 }
