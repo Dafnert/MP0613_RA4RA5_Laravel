@@ -48,6 +48,7 @@
                 <a href="/actorout/actors">Todos los actores</a>
             </div>
         </div>
+
     </div>
 
         <h2>Crear una película</h2>
@@ -84,6 +85,19 @@
 
                 <button type="submit" @class(['btn', 'btn-primary', 'mt-3'])>Enviar</button>
             </form>
+        </div>
+            <h2>Buscar actores por criterio</h2>
+         <div @class(['card', 'p-4'])>
+           <form method="GET" onsubmit="event.preventDefault(); window.location.href = '{{ url('actorout/listActorsByDecade') }}/' + this.year.value;">
+    <select name="year" class="form-control" required>
+        <option value="1980">1980 - 1989</option>
+        <option value="1990">1990 - 1999</option>
+        <option value="2000">2000 - 2009</option>
+        <option value="2010">2010 - 2019</option>
+        <option value="2020">2020 - 2029</option>
+    </select>
+    <button type="submit" class="btn btn-primary mt-3">Buscar</button>
+</form>
         </div>
     </div>
 
