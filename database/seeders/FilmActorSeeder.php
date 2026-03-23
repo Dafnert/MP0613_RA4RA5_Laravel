@@ -31,7 +31,7 @@ class FilmActorSeeder extends Seeder
             $selectedActors = $faker->randomElements($actorIds, $numberOfActors);
             
             foreach ($selectedActors as $actorId) {
-                DB::table('films_actors')->insert([
+                DB::table('actor_film')->insert([
                     'film_id' => $filmId,
                     'actor_id' => $actorId,
                     'created_at' => now(),
