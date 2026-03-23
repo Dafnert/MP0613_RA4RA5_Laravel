@@ -50,4 +50,5 @@ class ActorController extends Controller
             "status" => false
         ], 404);
     }
+  
 }

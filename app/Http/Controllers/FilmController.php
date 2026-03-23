@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\Models\Film;
+
 
 class FilmController extends Controller
 {
@@ -180,4 +182,12 @@ class FilmController extends Controller
         }
         return false;
     }
+    public function index()
+    {
+        $films = Film::with(['actors' => function($query){
+            $query->select('actors.id','name', 'surname', 'birthdate', 'country', 'salary', 'img_url');
+        }])->get(['films.id','name', 'year', 'genre', 'country', 'duration', 'rating', 'img_url']);
+        return response()->json($films);
+    }
+   
 }
