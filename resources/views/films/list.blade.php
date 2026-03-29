@@ -11,22 +11,24 @@
     <div align="center">
     <table border="1">
         <tr>
-            @foreach($films as $film)
-                @foreach(array_keys($film) as $key)
-                    <th>{{$key}}</th>
-                @endforeach
-                @break
-            @endforeach
+            <th>Name</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Country</th>
+            <th>Duration</th>
+            <th>Rating</th>
+            <th>Image</th>
         </tr>
 
         @foreach($films as $film)
             <tr>
-                <td>{{$film['name']}}</td>
-                <td>{{$film['year']}}</td>
-                <td>{{$film['genre']}}</td>
-                <td><img src={{$film['img_url']}} style="width: 100px; heigth: 120px;" /></td>
-                <td>{{$film['country']}}</td>
-                <td>{{$film['duration']}}</td>
+                <td>{{ $film->name }}</td>
+                <td>{{ $film->year }}</td>
+                <td>{{ $film->genre }}</td>
+                <td>{{ $film->country }}</td>
+                <td>{{ $film->duration }}</td>
+                <td>{{ $film->rating }}</td>
+                <td><img src={{$film->img_url}} style="width: 100px; heigth: 120px;" /></td>
             </tr>
         @endforeach
     </table>
